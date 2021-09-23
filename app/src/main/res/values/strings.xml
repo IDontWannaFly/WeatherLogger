@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Weather Logger</string>
+
+    <string name="refresh">Обновить</string>
+    <string name="temperature">Температура</string>
+    <string name="celsius_">%s °C</string>
+    <string name="pressure">Давление</string>
+    <string name="pressure_measurement_">%s мм. рт. ст.</string>
+    <string name="wind_strength">Скорость ветра</string>
+    <string name="meters_per_second_">%s м./сек.</string>
+    <string name="humidity">Влажность</string>
+    <string name="percent_">%s%%</string>
+    <string name="more">Подробнее</string>
+    <string name="data_received_at_">Данные получены на момент: %s</string>
+    <string name="no_internet">Для получения новых данных проверьте подключение к сети</string>
+    <string name="min">Мин.</string>
+    <string name="max">Макс</string>
+    <string name="feels_like">Ощущается</string>
+    <string name="cloudiness">Облачность</string>
+    <string name="sunrise">Восход</string>
+    <string name="sunset">Закат</string>
+</resources>

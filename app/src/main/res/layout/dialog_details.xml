@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="data"
+            type="com.mark.weatherlogger.db.models.WeatherDetailsDb" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@drawable/bg_rounded_16"
+        android:layout_margin="30dp"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:background="@drawable/bg_border_rounded_8"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temperature"
+                android:layout_columnSpan="2"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:text="@string/min"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
+                android:text="@{@string/celsius_(String.valueOf(data.tempMin))}"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:text="@string/max"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
+                android:text="@{@string/celsius_(String.valueOf(data.tempMax))}"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:text="@string/feels_like"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
+                android:text="@{@string/celsius_(String.valueOf(data.feelsLike))}"/>
+
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border_rounded_8"
+            android:layout_marginTop="10dp"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:text="@string/cloudiness"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:textColor="@color/black"
+                android:text="@{@string/percent_(String.valueOf(data.clouds))}"/>
+
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:background="@drawable/bg_border_rounded_8"
+            android:padding="8dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:text="@string/sunrise"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
+                android:text="@{data.sunriseTimeString}"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:text="@string/sunset"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
+                android:text="@{data.sunsetTimeString}"/>
+
+        </GridLayout>
+
+    </LinearLayout>
+</layout>

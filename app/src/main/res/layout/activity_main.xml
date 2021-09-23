@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.mark.weatherlogger.view_models.MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:orientation="horizontal"
+            android:background="@color/purple_500">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"/>
+
+            <ImageView android:id="@+id/image_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="16dp"
+                android:visibility="@{viewModel.isNetworkAvailable}"
+                android:src="@drawable/ic_update"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.weatherData.weather.name}"/>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@{viewModel.weatherData.weather.weatherIconLink}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.weatherData.weather.weatherDescription}"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textSize="16sp"
+                android:text="@string/temperature"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="@{@string/celsius_(String.valueOf(viewModel.weatherData.weather.temperature))}"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textSize="16sp"
+                android:text="@string/pressure"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="@{@string/pressure_measurement_(String.valueOf(viewModel.weatherData.weather.pressure))}"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textSize="16sp"
+                android:text="@string/wind_strength"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="5dp"
+                android:text="@{@string/meters_per_second_(String.valueOf(viewModel.weatherData.weather.windStrength))}"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textSize="16sp"
+                android:text="@string/humidity"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="@{@string/percent_(String.valueOf(viewModel.weatherData.weather.rainPossibility))}"
+                android:layout_margin="5dp"/>
+
+        </GridLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginTop="-15dp"
+            android:text="@{@string/data_received_at_(viewModel.weatherData.weather.dateString)}"
+            android:layout_marginStart="20dp"/>
+
+        <Button android:id="@+id/button_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:visibility="@{viewModel.weatherData.details != null}"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/warning"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:visibility="@{!viewModel.isNetworkAvailable}"
+            android:text="@string/no_internet"
+            app:drawableEndCompat="@drawable/ic_warning"
+            app:drawableTint="@color/white" />
+
+    </LinearLayout>
+
+</layout>
